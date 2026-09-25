@@ -33,13 +33,8 @@ public class ProdutoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarProduto(@PathVariable Long id) {
-        try {
-            Produto produto = produtoService.buscarPorId(id);
-            return ResponseEntity.ok(produto);
-
-        } catch (RecursoNaoEncontrado e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+        Produto produto = produtoService.buscarPorId(id);
+        return ResponseEntity.ok(produto);
     }
 
     @PostMapping
